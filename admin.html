@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel</title>
+
+<link rel="stylesheet"
+href="style.css">
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+E-Mart Admin
+</div>
+
+<nav>
+
+<ul>
+
+<li>
+<a href="index.html">
+Home
+</a>
+</li>
+
+<li>
+<a href="cart.html">
+Cart
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<div class="admin-container">
+
+<h1>
+Admin Dashboard
+</h1>
+
+<br>
+
+<input
+type="text"
+id="productName"
+placeholder="Product Name">
+
+<input
+type="number"
+id="productPrice"
+placeholder="Product Price">
+
+<input
+type="text"
+id="productImage"
+placeholder="Image URL">
+
+<button
+onclick="addProduct()">
+
+Add Product
+
+</button>
+
+<br><br>
+
+<h2>
+Manage Products
+</h2>
+
+<div
+id="productList"
+class="products">
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

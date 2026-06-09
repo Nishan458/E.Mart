@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Mart | Fashion Store</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            E-Mart
+        </div>
+
+        <nav>
+
+            <ul>
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="#products">Products</a>
+                </li>
+
+                <li>
+                    <a href="cart.html">Cart</a>
+                </li>
+
+                <li>
+                    <a href="login.html">Login</a>
+                </li>
+
+                <li>
+                    <a href="signup.html">Sign Up</a>
+                </li>
+
+                <li>
+                    <a href="admin.html">Admin</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <div class="icons">
+
+            <a href="cart.html">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+
+            <span id="cartCount">0</span>
+
+        </div>
+
+    </header>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Welcome To E-Mart</h1>
+
+            <p>
+                Premium T-Shirts, Shirts & Fashion Collection
+            </p>
+
+            <a href="#products">
+                <button class="shop-btn">
+                    Shop Now
+                </button>
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- NEW ARRIVALS -->
+
+    <section class="new-arrivals" id="products">
+
+        <h2>New Arrivals</h2>
+
+        <div class="products">
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500">
+
+                <h3>Black T-Shirt</h3>
+
+                <p class="price">৳699</p>
+
+                <button onclick="addToCart(1)">
+                    Add To Cart
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=500">
+
+                <h3>White T-Shirt</h3>
+
+                <p class="price">৳799</p>
+
+                <button onclick="addToCart(2)">
+                    Add To Cart
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500">
+
+                <h3>Blue Polo Shirt</h3>
+
+                <p class="price">৳999</p>
+
+                <button onclick="addToCart(3)">
+                    Add To Cart
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?w=500">
+
+                <h3>Formal Shirt</h3>
+
+                <p class="price">৳1499</p>
+
+                <button onclick="addToCart(4)">
+                    Add To Cart
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ADMIN PRODUCTS -->
+
+    <section class="new-arrivals">
+
+        <h2>Admin Added Products</h2>
+
+        <div class="products" id="dynamicProducts">
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 E-Mart. All Rights Reserved.
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shopping Cart</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+E-Mart
+</div>
+
+<nav>
+
+<ul>
+
+<li>
+<a href="index.html">
+Home
+</a>
+</li>
+
+<li>
+<a href="admin.html">
+Admin
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="new-arrivals">
+
+<h2>Your Cart</h2>
+
+<div id="cartItems">
+
+</div>
+
+<h2 id="total">
+
+</h2>
+
+<button
+onclick="placeOrder()"
+class="shop-btn">
+
+Place Order
+
+</button>
+
+</section>
+
+<script>
+
+const cart =
+JSON.parse(
+localStorage.getItem("cart")
+) || [];
+
+let total = 0;
+
+const cartItems =
+document.getElementById(
+"cartItems"
+);
+
+cart.forEach(item => {
+
+total += Number(item.price);
+
+cartItems.innerHTML +=
+
+`
+<div class="card"
+style="margin-bottom:20px;">
+
+<h3>${item.name}</h3>
+
+<p class="price">
+৳${item.price}
+</p>
+
+</div>
+`;
+
+});
+
+document.getElementById(
+"total"
+).innerHTML =
+"Total: ৳" + total;
+
+function placeOrder(){
+
+if(cart.length === 0){
+
+alert(
+"Cart is Empty"
+);
+
+return;
+}
+
+let orders =
+JSON.parse(
+localStorage.getItem(
+"orders"
+)
+) || [];
+
+orders.push({
+
+date:new Date(),
+
+items:cart,
+
+total:total
+
+});
+
+localStorage.setItem(
+"orders",
+JSON.stringify(
+orders
+)
+);
+
+localStorage.removeItem(
+"cart"
+);
+
+alert(
+"Order Placed Successfully"
+);
+
+window.location.href =
+"index.html";
+}
+
+</script>
+
+</body>
+</html>
