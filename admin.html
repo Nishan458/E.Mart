@@ -1,8 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>E-Mart Admin Panel</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+E-Mart Admin
+</div>
+
+<nav>
+
+<ul>
+
+<li>
+<a href="index.html">Home</a>
+</li>
+
+<li>
+<a href="cart.html">Cart</a>
+</li>
+
+<li>
+<a href="login.html">User Login</a>
+</li>
+
+</ul>
+
+</nav>
+
+</header>
+
 <div class="admin-container">
 
-<h1>Admin Login</h1>
+<!-- ADMIN LOGIN -->
 
 <div id="loginSection">
+
+<h1>
+Admin Login
+</h1>
 
 <input
 type="text"
@@ -15,18 +64,41 @@ id="adminPassword"
 placeholder="Admin Password">
 
 <button onclick="adminLogin()">
-Login
+<i class="fa-solid fa-right-to-bracket"></i>
+ Login
 </button>
 
 </div>
 
+<!-- ADMIN DASHBOARD -->
+
 <div id="adminDashboard" style="display:none;">
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+">
 
 <h1>
 Admin Dashboard
 </h1>
 
+<button onclick="adminLogout()">
+<i class="fa-solid fa-right-from-bracket"></i>
+ Logout
+</button>
+
+</div>
+
+<hr>
+
 <br>
+
+<h2>
+Add New Product
+</h2>
 
 <input
 type="text"
@@ -41,14 +113,11 @@ placeholder="Product Price">
 <input
 type="text"
 id="productImage"
-placeholder="Image URL">
+placeholder="Product Image URL">
 
 <button onclick="addProduct()">
-Add Product
-</button>
-
-<button onclick="adminLogout()">
-Logout
+<i class="fa-solid fa-plus"></i>
+ Add Product
 </button>
 
 <br><br>
@@ -60,8 +129,14 @@ Manage Products
 <div
 id="productList"
 class="products">
-</div>
 
 </div>
 
 </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
