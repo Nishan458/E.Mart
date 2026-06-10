@@ -1,103 +1,391 @@
 /* =========================
-   ADMIN LOGIN
+   DEFAULT PRODUCTS
 ========================= */
 
-const ADMIN_USERNAME = "admin";
-const ADMIN_PASSWORD = "123456";
+const products = [
+{
+    id:1,
+    name:"Black T-Shirt",
+    price:699,
+    image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500"
+},
+{
+    id:2,
+    name:"White T-Shirt",
+    price:799,
+    image:"https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=500"
+},
+{
+    id:3,
+    name:"Blue Polo Shirt",
+    price:999,
+    image:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500"
+},
+{
+    id:4,
+    name:"Formal Shirt",
+    price:1499,
+    image:"https://images.unsplash.com/photo-1603252109303-2751441dd157?w=500"
+}
+];
 
-function adminLogin(){
 
-    const username =
+/* =========================
+   CART SYSTEM
+========================= */
+
+let cart =
+JSON.parse(localStorage.getItem("cart"))
+|| [];
+
+function addToCart(id){
+
+    const product =
+    products.find(
+        p => p.id === id
+    );
+
+    if(product){
+
+        cart.push(product);
+
+        localStorage.setItem(
+            "cart",
+            JSON.stringify(cart)
+        );
+
+        updateCartCount();
+
+        alert(
+            product.name +
+            " added to cart"
+        );
+    }
+}
+
+function updateCartCount(){
+
+    const cartCount =
+    document.getElementById("cartCount");
+
+    if(cartCount){
+        cartCount.innerText =
+        cart.length;
+    }
+}
+
+updateCartCount();
+
+
+/* =========================
+   USER SIGNUP
+========================= */
+
+function signupUser(){
+
+    const user = {
+
+        name:
+        document.getElementById(
+            "signupName"
+        ).value,
+
+        email:
+        document.getElementById(
+            "signupEmail"
+        ).value,
+
+        password:
+        document.getElementById(
+            "signupPassword"
+        ).value
+    };
+
+    localStorage.setItem(
+        "user",
+        JSON.stringify(user)
+    );
+
+    alert(
+        "Account Created Successfully"
+    );
+
+    window.location.href =
+    "login.html";
+}
+
+
+/* =========================
+   USER LOGIN
+========================= */
+
+function loginUser(){
+
+    const email =
     document.getElementById(
-        "adminUsername"
+        "loginEmail"
     ).value;
 
     const password =
     document.getElementById(
-        "adminPassword"
+        "loginPassword"
     ).value;
 
+    const user =
+    JSON.parse(
+        localStorage.getItem("user")
+    );
+
     if(
-        username === ADMIN_USERNAME &&
-        password === ADMIN_PASSWORD
+        user &&
+        user.email === email &&
+        user.password === password
     ){
 
         localStorage.setItem(
-            "adminLoggedIn",
+            "loggedIn",
             "true"
         );
 
-        showAdminDashboard();
-
         alert(
-            "Admin Login Successful"
+            "Login Successful"
         );
+
+        window.location.href =
+        "index.html";
 
     }else{
 
         alert(
-            "Wrong Username or Password"
+            "Invalid Email or Password"
         );
     }
 }
 
 
 /* =========================
-   ADMIN LOGOUT
+   LOGOUT
 ========================= */
 
-function adminLogout(){
+function logoutUser(){
 
     localStorage.removeItem(
-        "adminLoggedIn"
+        "loggedIn"
     );
 
-    location.reload();
+    alert(
+        "Logged Out Successfully"
+    );
+
+    window.location.href =
+    "login.html";
 }
 
 
 /* =========================
-   SHOW ADMIN DASHBOARD
+   ADMIN ADD PRODUCT
 ========================= */
 
-function showAdminDashboard(){
+function addProduct(){
 
-    const loginSection =
+    let adminProducts =
+    JSON.parse(
+        localStorage.getItem(
+            "adminProducts"
+        )
+    ) || [];
+
+    const name =
     document.getElementById(
-        "loginSection"
+        "productName"
+    ).value;
+
+    const price =
+    document.getElementById(
+        "productPrice"
+    ).value;
+
+    const image =
+    document.getElementById(
+        "productImage"
+    ).value;
+
+    const product = {
+
+        name:name,
+        price:price,
+        image:image
+    };
+
+    adminProducts.push(
+        product
     );
 
-    const dashboard =
-    document.getElementById(
-        "adminDashboard"
+    localStorage.setItem(
+        "adminProducts",
+        JSON.stringify(
+            adminProducts
+        )
     );
 
-    if(loginSection){
-        loginSection.style.display =
-        "none";
-    }
+    alert(
+        "Product Added Successfully"
+    );
 
-    if(dashboard){
-        dashboard.style.display =
-        "block";
-    }
+    displayProducts();
+
+    document.getElementById(
+        "productName"
+    ).value = "";
+
+    document.getElementById(
+        "productPrice"
+    ).value = "";
+
+    document.getElementById(
+        "productImage"
+    ).value = "";
 }
 
 
 /* =========================
-   CHECK ADMIN LOGIN
+   DISPLAY PRODUCTS
+========================= */
+
+function displayProducts(){
+
+    const productList =
+    document.getElementById(
+        "productList"
+    );
+
+    if(!productList) return;
+
+    let adminProducts =
+    JSON.parse(
+        localStorage.getItem(
+            "adminProducts"
+        )
+    ) || [];
+
+    productList.innerHTML = "";
+
+    adminProducts.forEach(
+    (product,index)=>{
+
+        productList.innerHTML +=
+
+        `
+        <div class="card">
+
+            <img src="${product.image}">
+
+            <h3>${product.name}</h3>
+
+            <p class="price">
+            ৳${product.price}
+            </p>
+
+            <button onclick=
+            "deleteProduct(${index})">
+
+            Delete
+
+            </button>
+
+        </div>
+        `;
+    });
+}
+
+
+/* =========================
+   DELETE PRODUCT
+========================= */
+
+function deleteProduct(index){
+
+    let adminProducts =
+    JSON.parse(
+        localStorage.getItem(
+            "adminProducts"
+        )
+    ) || [];
+
+    adminProducts.splice(
+        index,
+        1
+    );
+
+    localStorage.setItem(
+        "adminProducts",
+        JSON.stringify(
+            adminProducts
+        )
+    );
+
+    displayProducts();
+
+    loadHomepageProducts();
+}
+
+
+/* =========================
+   HOMEPAGE PRODUCTS
+========================= */
+
+function loadHomepageProducts(){
+
+    const dynamicProducts =
+    document.getElementById(
+        "dynamicProducts"
+    );
+
+    if(!dynamicProducts) return;
+
+    let adminProducts =
+    JSON.parse(
+        localStorage.getItem(
+            "adminProducts"
+        )
+    ) || [];
+
+    dynamicProducts.innerHTML = "";
+
+    adminProducts.forEach(
+    (product)=>{
+
+        dynamicProducts.innerHTML +=
+
+        `
+        <div class="card">
+
+            <img src="${product.image}">
+
+            <h3>${product.name}</h3>
+
+            <p class="price">
+            ৳${product.price}
+            </p>
+
+        </div>
+        `;
+    });
+}
+
+
+/* =========================
+   PAGE LOAD
 ========================= */
 
 document.addEventListener(
 "DOMContentLoaded",
 function(){
 
-    if(
-        localStorage.getItem(
-            "adminLoggedIn"
-        ) === "true"
-    ){
+    updateCartCount();
 
-        showAdminDashboard();
-    }
+    displayProducts();
+
+    loadHomepageProducts();
+
 });
