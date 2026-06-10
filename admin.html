@@ -1,48 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="admin-container">
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<h1>Admin Login</h1>
 
-<title>Admin Panel</title>
+<div id="loginSection">
 
-<link rel="stylesheet"
-href="style.css">
-</head>
+<input
+type="text"
+id="adminUsername"
+placeholder="Admin Username">
 
-<body>
+<input
+type="password"
+id="adminPassword"
+placeholder="Admin Password">
 
-<header>
+<button onclick="adminLogin()">
+Login
+</button>
 
-<div class="logo">
-E-Mart Admin
 </div>
 
-<nav>
-
-<ul>
-
-<li>
-<a href="index.html">
-Home
-</a>
-</li>
-
-<li>
-<a href="cart.html">
-Cart
-</a>
-</li>
-
-</ul>
-
-</nav>
-
-</header>
-
-<div class="admin-container">
+<div id="adminDashboard" style="display:none;">
 
 <h1>
 Admin Dashboard
@@ -65,11 +43,12 @@ type="text"
 id="productImage"
 placeholder="Image URL">
 
-<button
-onclick="addProduct()">
-
+<button onclick="addProduct()">
 Add Product
+</button>
 
+<button onclick="adminLogout()">
+Logout
 </button>
 
 <br><br>
@@ -81,12 +60,8 @@ Manage Products
 <div
 id="productList"
 class="products">
-
 </div>
 
 </div>
 
-<script src="script.js"></script>
-
-</body>
-</html>
+</div>
