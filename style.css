@@ -1,15 +1,30 @@
+/* =========================
+   GLOBAL
+========================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Segoe UI',sans-serif;
 }
 
 body{
-    background:#f8fafc;
+    background:#f5f7fa;
+    color:#333;
 }
 
-/* HEADER */
+a{
+    text-decoration:none;
+}
+
+ul{
+    list-style:none;
+}
+
+/* =========================
+   HEADER
+========================= */
 
 header{
     background:#0f172a;
@@ -23,23 +38,24 @@ header{
     position:sticky;
     top:0;
     z-index:1000;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.2);
 }
 
 .logo{
     font-size:28px;
     font-weight:bold;
+    color:#f97316;
 }
 
 nav ul{
-    list-style:none;
     display:flex;
     gap:25px;
 }
 
 nav a{
     color:white;
-    text-decoration:none;
-    transition:0.3s;
+    transition:.3s;
 }
 
 nav a:hover{
@@ -60,34 +76,40 @@ nav a:hover{
 #cartCount{
     background:#f97316;
     color:white;
-    padding:2px 8px;
     border-radius:50%;
+    padding:3px 8px;
+    font-size:14px;
 }
 
-/* HERO */
+/* =========================
+   HERO SECTION
+========================= */
 
 .hero{
     height:500px;
 
-    background:url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1500")
-    center center/cover;
+    background:
+    linear-gradient(
+        rgba(0,0,0,.5),
+        rgba(0,0,0,.5)
+    ),
+    url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1500");
+
+    background-size:cover;
+    background-position:center;
 
     display:flex;
     justify-content:center;
     align-items:center;
-
-    text-align:center;
 }
 
 .hero-content{
-    background:rgba(0,0,0,.5);
-    padding:30px;
-    border-radius:10px;
+    text-align:center;
     color:white;
 }
 
 .hero-content h1{
-    font-size:50px;
+    font-size:55px;
     margin-bottom:15px;
 }
 
@@ -101,12 +123,19 @@ nav a:hover{
     border:none;
     background:#f97316;
     color:white;
-    cursor:pointer;
-    border-radius:5px;
     font-size:16px;
+    cursor:pointer;
+    border-radius:6px;
+    transition:.3s;
 }
 
-/* PRODUCTS */
+.shop-btn:hover{
+    background:#ea580c;
+}
+
+/* =========================
+   PRODUCTS
+========================= */
 
 .new-arrivals{
     padding:60px;
@@ -120,15 +149,20 @@ nav a:hover{
 
 .products{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
     gap:25px;
 }
 
 .card{
     background:white;
-    border-radius:10px;
+    border-radius:12px;
     overflow:hidden;
-    box-shadow:0 2px 10px rgba(0,0,0,.1);
+
+    box-shadow:
+    0 2px 10px rgba(0,0,0,.1);
+
     transition:.3s;
 }
 
@@ -147,31 +181,46 @@ nav a:hover{
 }
 
 .price{
-    padding:0 10px;
     color:#f97316;
     font-weight:bold;
+    padding:0 10px;
 }
 
 .card button{
     width:90%;
     margin:10px;
-    padding:10px;
+    padding:12px;
+
     border:none;
+    border-radius:6px;
+
     background:#f97316;
     color:white;
+
     cursor:pointer;
-    border-radius:5px;
+    transition:.3s;
 }
 
-/* LOGIN & SIGNUP */
+.card button:hover{
+    background:#ea580c;
+}
+
+/* =========================
+   LOGIN / SIGNUP
+========================= */
 
 .form-container{
     width:400px;
     margin:60px auto;
+
     background:white;
+
     padding:30px;
+
     border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,.1);
+
+    box-shadow:
+    0 0 10px rgba(0,0,0,.1);
 }
 
 .form-container h2{
@@ -182,55 +231,164 @@ nav a:hover{
 .form-container input{
     width:100%;
     padding:12px;
+
     margin-bottom:15px;
+
     border:1px solid #ccc;
+    border-radius:6px;
 }
 
 .form-container button{
     width:100%;
+
     padding:12px;
+
     border:none;
+
     background:#f97316;
     color:white;
+
+    border-radius:6px;
+
     cursor:pointer;
 }
 
-/* ADMIN */
+.form-container button:hover{
+    background:#ea580c;
+}
+
+.form-container p{
+    text-align:center;
+    margin-top:15px;
+}
+
+/* =========================
+   ADMIN PANEL
+========================= */
 
 .admin-container{
-    padding:30px;
+    max-width:1000px;
+
+    margin:40px auto;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:10px;
+
+    box-shadow:
+    0 0 10px rgba(0,0,0,.1);
+}
+
+.admin-container h1{
+    margin-bottom:20px;
+}
+
+.admin-container h2{
+    margin-bottom:15px;
 }
 
 .admin-container input{
-    padding:10px;
-    margin:5px;
+    width:100%;
+
+    padding:12px;
+
+    margin-bottom:10px;
+
+    border:1px solid #ccc;
+
+    border-radius:6px;
 }
 
 .admin-container button{
-    padding:10px 20px;
-    background:#f97316;
+    padding:12px 20px;
+
     border:none;
+
+    background:#f97316;
+
     color:white;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    margin-right:10px;
+}
+
+.admin-container button:hover{
+    background:#ea580c;
+}
+
+/* =========================
+   CART PAGE
+========================= */
+
+.cart-item{
+    background:white;
+
+    padding:15px;
+
+    margin-bottom:15px;
+
+    border-radius:10px;
+
+    box-shadow:
+    0 2px 5px rgba(0,0,0,.1);
+}
+
+.cart-total{
+    margin-top:20px;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.order-btn{
+    margin-top:20px;
+
+    padding:12px 25px;
+
+    background:#16a34a;
+
+    color:white;
+
+    border:none;
+
+    border-radius:6px;
+
     cursor:pointer;
 }
 
-/* FOOTER */
+.order-btn:hover{
+    background:#15803d;
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
     background:#0f172a;
     color:white;
+
     text-align:center;
+
     padding:20px;
-    margin-top:40px;
+
+    margin-top:50px;
 }
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media(max-width:768px){
 
     header{
         flex-direction:column;
         gap:15px;
+        padding:20px;
     }
 
     nav ul{
@@ -242,11 +400,19 @@ footer{
         font-size:35px;
     }
 
+    .hero-content p{
+        font-size:16px;
+    }
+
     .new-arrivals{
         padding:20px;
     }
 
     .form-container{
         width:90%;
+    }
+
+    .admin-container{
+        width:95%;
     }
 }
